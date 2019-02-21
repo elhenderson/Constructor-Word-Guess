@@ -3,26 +3,43 @@ let inquirer = require('inquirer');
 
 let randomWordArray = ["Angular", "React",  "Redux", "Vue", "Electron"]
 
-let guessCounter = 10;
+let guessCounter = 5;
 
 function startGame() {
-  let word = new Word(randomWordArray[Math.floor(Math.random() * randomWordArray.length)]);
-  word.stringRepresentingTheWord();
-  function anotherGuess() {
-    inquirer.prompt([
-      {
-        type: "input",
-        name: "guess",
-        message: "Guess a letter",  
-      }
-    ]).then(function(answers) {    
-      word.takeCharacterAndCallGuessFunction(answers.guess);
-      word.stringRepresentingTheWord();
-    })
-  }
-  if (guessCounter > 0) {
-    anotherGuess()
-  }
+  let randomWord = randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
+  let testWord = randomWord.split("").join(" ");
+  console.log(testWord);
+  let word = new Word(randomWord);
+  let guessingWord = word.stringRepresentingTheWord();
+  console.log(guessingWord);
+    function loopThis() {
+      inquirer.prompt([
+        {
+          type: "input",
+          name: "guess",
+          message: "Guess a letter",  
+        }
+      ]).then(function(answers) {  
+        if (guessCounter === 0) {
+          console.log("You're out of guesses!")
+        } else {
+          console.log(`\nYou have ${guessCounter} guesses left!`)  
+        }
+        if (testWord === guessingWord) {
+          console.log("You won!")
+        }
+        word.takeCharacterAndCallGuessFunction(answers.guess);
+        word.stringRepresentingTheWord();
+        // let compactWord = "some word"
+        // let isWordComplete = compactWord.replace(/\s+/g, "");
+        // console.log(isWordComplete);
+        guessCounter--;
+        if (guessCounter >= 0) {
+          loopThis();
+        }
+      })
+    }
+    loopThis();
 }
 startGame();
 // word.stringRepresentingTheWord();
