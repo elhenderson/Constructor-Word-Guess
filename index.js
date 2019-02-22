@@ -1,14 +1,14 @@
 let Word = require("./Word.js");
 let inquirer = require('inquirer');
 
-let randomWordArray = ["Angular", "React",  "Redux", "Vue", "Electron", "React Native"]
+let randomWordArray = ["React Native", "Angular", "Redux", "React", "Vue"]
 
 let guessCounter = 10;
 
 function startGame() {
   let randomWord = randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
   // let testWord = randomWord.split("").join(" ");
-  let word = new Word(randomWord.toLowerCase());
+  let word = new Word(randomWord);
   word.stringRepresentingTheWord()
 
     //Resets the game if true
@@ -46,7 +46,7 @@ function startGame() {
       ]).then(function(answers) {  
         word.takeCharacterAndCallGuessFunction(answers.guess);
         word.stringRepresentingTheWord();
-        if (randomWord === word.noSpacesToTestWord) {
+        if (randomWord.replace(/\s/g, "") === word.noSpacesToTestWord) {
           console.log(`\nYou won!\n`);
           tryAgain();
           return

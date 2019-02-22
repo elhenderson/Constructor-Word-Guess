@@ -16,23 +16,27 @@ class Word {
     // A function that returns a string representing the word. This should call the function on each letter object (the first function defined in Letter.js) that displays the character or an underscore and concatenate those together.
     this.stringRepresentingTheWord = function() {
       let appendThis = "";
-      // let this.displayWord = "";
-        // function loopThis() {
-          this.displayWord = ""
+          this.displayWord = `\n \n`
           for (let i=0;i<letterArray.length;i++) {
             let characterToAdd = letterArray[i].returnUnderlyingCharacterOrPlaceholder();
-            // console.log(characterToAdd);
             this.displayWord += appendThis.concat(characterToAdd, " ");
           }
       this.noSpacesToTestWord = this.displayWord.replace(/\s/g, "")
-      console.log(this.displayWord);
+      console.log("\x1b[37m", this.displayWord);
       
     }
     // A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in Letter.js)
     this.takeCharacterAndCallGuessFunction = function(characterGuess) {
+      // for (let i = 0; i<letterArray.length; i++) {
+
+      // }
+      // letterArray[i].correctOrIncorrect = false;
       for (let i=0;i<letterArray.length;i++) {
         letterArray[i].updateBoolean(characterGuess);
       }
+
+
+
     }
   }
 }
