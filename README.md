@@ -3,16 +3,16 @@
 ## This is a basic hangman game that runs in the CLI.
 
 ### Letter class code
-![alt text](Letter.png)
+![alt text](./images/Letter.png)
 
 ### Word class code
-![alt text](Word.png)
+![alt text](./images/Word.png)
 
 ### Game code
-![alt text](Game.png)
+![alt text](./images/Game.png)
 
 ### Game demo
-![alt text](gameDemo1.png)
-![alt text](gameDemo2.png)
-![alt text](gameDemo3.png)
-![alt text](gameDemo4.png)
+![alt text](./images/gameDemo1.png)
+![alt text](./images/gameDemo2.png)
+![alt text](./images/gameDemo3.png)
+![alt text](./images/gameDemo4.png)
