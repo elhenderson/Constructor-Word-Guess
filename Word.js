@@ -3,7 +3,7 @@ let Letter = require("./Letter.js")
 
 
 class Word {
-  constructor(tempWordToGuess, stringRepresentingTheWord, takeCharacterAndCallGuessFunction) {
+  constructor(tempWordToGuess, noSpacesToTestWord, displayWord, stringRepresentingTheWord, takeCharacterAndCallGuessFunction) {
     // An array of new Letter objects representing the letters of the underlying word
     let letterArray = [];
     this.wordToGuess = tempWordToGuess.split("");
@@ -11,17 +11,22 @@ class Word {
         let letter = new Letter(this.wordToGuess[i])
         letterArray.push(letter);
       }
+    this.displayWord = "";
+    this.noSpacesToTestWord = "";
     // A function that returns a string representing the word. This should call the function on each letter object (the first function defined in Letter.js) that displays the character or an underscore and concatenate those together.
     this.stringRepresentingTheWord = function() {
       let appendThis = "";
-      let displayWord = "";
+      // let this.displayWord = "";
         // function loopThis() {
+          this.displayWord = ""
           for (let i=0;i<letterArray.length;i++) {
             let characterToAdd = letterArray[i].returnUnderlyingCharacterOrPlaceholder();
             // console.log(characterToAdd);
-            displayWord += appendThis.concat(characterToAdd, " ");
+            this.displayWord += appendThis.concat(characterToAdd, " ");
           }
-      console.log(displayWord);
+      this.noSpacesToTestWord = this.displayWord.replace(/\s/g, "")
+      console.log(this.displayWord);
+      
     }
     // A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in Letter.js)
     this.takeCharacterAndCallGuessFunction = function(characterGuess) {
@@ -36,24 +41,6 @@ module.exports = Word;
 
 
 
-
-// this.stringRepresentingTheWord = function() {
-//   let appendThis = "";
-//   let displayWord = "";
-//   for (i = 0;i<letterArray.length;i++) {
-//     let characterToAdd = letterArray[i].returnUnderlyingCharacterOrPlaceholder();
-//     // console.log(characterToAdd);
-//     displayWord += appendThis.concat(characterToAdd, " ");
-//   }
-//   console.log(displayWord);
-// }
-
-// // A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in Letter.js)
-// this.takeCharacterAndCallGuessFunction = function(characterGuess) {
-//   for (i=0;i<letterArray.length;i++) {
-//     letterArray[i].updateBoolean(characterGuess);
-//   }
-// }
 
 
 
