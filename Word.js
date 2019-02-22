@@ -1,7 +1,5 @@
 let Letter = require("./Letter.js")
 
-
-
 class Word {
   constructor(tempWordToGuess, noSpacesToTestWord, displayWord, stringRepresentingTheWord, takeCharacterAndCallGuessFunction) {
     // An array of new Letter objects representing the letters of the underlying word

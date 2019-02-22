@@ -1,7 +1,7 @@
 let Word = require("./Word.js");
 let inquirer = require('inquirer');
 
-let randomWordArray = ["React Native", "Angular", "Redux", "React", "Vue"]
+let randomWordArray = ["React Native", "Vue", "Angular", "Redux"]
 
 let guessCounter = 10;
 
@@ -35,8 +35,8 @@ function startGame() {
           name: "guess",
           message: "Guess a letter",  
           validate: function(input) {
-            if (!input.match(/[a-z]/)) {
-              console.log(`\nEnter a letter\n`)
+            if (!input.match(/[a-z]/) || input.length !== 1) {
+              console.log(`\nEnter one lowercase letter\n`)
               return false
             } else {
               return true
