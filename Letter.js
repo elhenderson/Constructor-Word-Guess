@@ -15,15 +15,8 @@ class Letter {
     this.updateBoolean = function(characterGuess) {
       if (characterGuess === this.underlyingCharacter || characterGuess.toUpperCase() === this.testForUpperCase) {
         this.hasBeenGuessedBoolean = true;
+        return true;
       } 
-      
-      //   console.log("\x1b[31m" , "Incorrect!")
-      // }
-      // if (this.hasBeenGuessedBoolean === true) {
-        
-      //   return
-      // }
-  
     }
   }
   

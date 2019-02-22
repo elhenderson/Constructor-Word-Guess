@@ -27,14 +27,16 @@ class Word {
     }
     // A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in Letter.js)
     this.takeCharacterAndCallGuessFunction = function(characterGuess) {
-      // for (let i = 0; i<letterArray.length; i++) {
-
-      // }
-      // letterArray[i].correctOrIncorrect = false;
+      let correctOrIncorrect = [];
       for (let i=0;i<letterArray.length;i++) {
         letterArray[i].updateBoolean(characterGuess);
+        correctOrIncorrect.push(letterArray[i].updateBoolean(characterGuess))
       }
-
+      if (correctOrIncorrect.includes(true)) {
+        console.log("\x1b[32m", `\nCorrect!`);
+      } else {
+        console.log("\x1b[31m", `\nIncorrect!`);
+      }
 
 
     }
